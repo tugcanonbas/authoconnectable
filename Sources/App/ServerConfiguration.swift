@@ -9,8 +9,8 @@ import Authomatek
 import ConnectableKit
 import Fluent
 import Fluent{{fluent.module}}Driver
-{{#leaf}}import Leaf{{ /leaf }}
-import Vapor
+{{#leaf}}import Leaf
+{{/leaf}}import Vapor
 
 public struct ServerConfiguration {
     let app: Application
