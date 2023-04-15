@@ -39,6 +39,11 @@ final class Profile: Model, Connectable {
 }
 
 extension Profile {
+    struct Create: Content {
+        let name: String
+        let surname: String
+        let bio: String
+    }
     struct List: Connectable {
         let count: Int
         let profiles: [Profile]

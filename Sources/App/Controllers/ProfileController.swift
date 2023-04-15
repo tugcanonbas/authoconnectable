@@ -20,11 +20,14 @@ struct ProfileController {
     }
 
     func create(req: Request) async throws -> Profile.DTO {
-        let profile = try req.content.decode(Profile.self)
+        let createRequest = try req.content.decode(Profile.Create.self)
 
         let user = try req.auth.require(UserModel.self)
+
+        let profile = Profile(name: createRequest.name, surname: createRequest.surname, bio: createRequest.bio)
+
         profile.$user.id = try user.requireID()
-        
+
         try await profile.save(on: req.db)
 
         return profile.toDTO(.created, status: .success, message: "Profile created successfully!")
