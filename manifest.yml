@@ -37,8 +37,8 @@ files:
             dynamic: true
           - folder: Controllers
             files:
-              - file: ProfileController.swift
-              - file: AuthoConnectable.swift
+              - ProfileController.swift
+              - AuthoConnectable.swift
           - folder: Core
             files:
               - folder: Extensions
@@ -54,7 +54,8 @@ files:
               - Profile.swift
           - folder: Routers
             files:
-              - APIRouter.swift
+              - file: APIRouter.swift
+                dynamic: true
               - ProfileRouter.swift
   - folder: Tests
     files:
