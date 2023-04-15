@@ -60,7 +60,7 @@ services:
       - db
     command: ["migrate", "--revert", "--yes"]
     deploy:
-      replicas: 0{{#db.is_postgres}}
+      replicas: 0{{#fluent.is_postgres}}
   db:
     image: postgres:14-alpine
     volumes:
@@ -71,7 +71,7 @@ services:
       POSTGRES_PASSWORD: vapor_password
       POSTGRES_DB: vapor_database
     ports:
-      - '5432:5432'{{/db.is_postgres}}{{#db.is_mysql}}
+      - '5432:5432'{{/fluent.is_postgres}}{{#fluent.is_mysql}}
   db:
     image: mysql:8.0
     volumes:
@@ -82,4 +82,4 @@ services:
       MYSQL_DATABASE: vapor_database
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     ports:
-      - '3306:3306'{{/db.is_mysql}}
+      - '3306:3306'{{/fluent.is_mysql}}

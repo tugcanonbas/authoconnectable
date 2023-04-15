@@ -55,11 +55,7 @@ public struct ServerConfiguration {
 
         app.middleware.use(FileMiddleware(publicDirectory: app.directory.publicDirectory))
 
-        {{#leaf}}
-
-        app.views.use(.leaf)
-
-        {{/leaf}}
+        {{#leaf}}app.views.use(.leaf){{/leaf}}
     }
 
     //MARK: - Authomatek Settings

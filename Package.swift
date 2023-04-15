@@ -20,9 +20,9 @@ let package = Package(
             name: "App",
             dependencies: [
                 .product(name: "Fluent", package: "fluent"),
-                .product(name: "Fluent{{fluent.module}}Driver", package: "fluent-{{fluent.db.url}}-driver"),{{#leaf}}
+                .product(name: "Fluent{{fluent.module}}Driver", package: "fluent-{{fluent.url}}-driver"),{{#leaf}}
                 .product(name: "Leaf", package: "leaf"),{{/leaf}}
-                .product(name: "Vapor", package: "vapor")
+                .product(name: "Vapor", package: "vapor"),
                 .product(name: "ConnectableKit", package: "connectable-kit"),
                 .product(name: "Authomatek", package: "authomatek"),
             ],
