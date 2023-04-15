@@ -10,11 +10,9 @@ import Vapor
 
 struct APIRouter: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
-        {{#leaf}}
-        routes.get { req -> View in
+        {{#leaf}}routes.get { req -> View in
             return try await req.view.render("index", ["title": "AuthoConnectable Template"])
-        }
-        {{/leaf}}
+        }{{/leaf}}
 
         let api = routes.grouped(Endpoint.api)
         try registerV1Routes(routes: api)
