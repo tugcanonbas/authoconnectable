@@ -11,7 +11,7 @@ let package = Package(
         .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),{{#fluent}}
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/fluent-{{fluent.db.url}}-driver.git", from: "{{fluent.db.version}}"),{{/fluent}}{{#leaf}}
-        .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),{{/leaf}},
+        .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),{{/leaf}}
         .package(url: "https://github.com/tugcanonbas/connectable-kit.git", from: "1.0.0"),
         .package(url: "https://github.com/tugcanonbas/authomatek.git", from: "0.0.1"),
     ],
