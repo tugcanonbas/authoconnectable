@@ -8,9 +8,9 @@ let package = Package(
     ],
     dependencies:[ 
         // 💧 A server-side Swift web framework.
-        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),{{#fluent}}
+        .package(url: "https://github.com/vapor/vapor.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
-        .package(url: "https://github.com/vapor/fluent-{{fluent.db.url}}-driver.git", from: "{{fluent.db.version}}"),{{/fluent}}{{#leaf}}
+        .package(url: "https://github.com/vapor/fluent-{{fluent.url}}-driver.git", from: "{{fluent.version}}"),{{#leaf}}
         .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),{{/leaf}}
         .package(url: "https://github.com/tugcanonbas/connectable-kit.git", from: "1.0.0"),
         .package(url: "https://github.com/tugcanonbas/authomatek.git", from: "0.0.1"),
@@ -18,9 +18,9 @@ let package = Package(
     targets: [
         .target(
             name: "App",
-            dependencies: [{{#fluent}}
+            dependencies: [
                 .product(name: "Fluent", package: "fluent"),
-                .product(name: "Fluent{{fluent.db.module}}Driver", package: "fluent-{{fluent.db.url}}-driver"),{{/fluent}}{{#leaf}}
+                .product(name: "Fluent{{fluent.module}}Driver", package: "fluent-{{fluent.db.url}}-driver"),{{#leaf}}
                 .product(name: "Leaf", package: "leaf"),{{/leaf}}
                 .product(name: "Vapor", package: "vapor")
                 .product(name: "ConnectableKit", package: "connectable-kit"),
