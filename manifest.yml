@@ -1,0 +1,78 @@
+name: AuthoConnectable Vapor Template
+variables:
+  - name: fluent
+    description: Which database would you like to use?
+    type: option
+    options:
+      - name: Postgres (Recommended)
+        description: ""
+        data:
+          module: Postgres
+          url: postgres
+          id: psql
+          version: "2.0.0"
+          is_postgres: true
+      - name: MySQL
+        description: ""
+        data:
+          module: MySQL
+          url: mysql
+          id: mysql
+          version: "4.0.0"
+          is_mysql: true
+  - name: leaf
+    description: Would you like to use Leaf?
+    type: bool
+files:
+  - file: Package.swift
+    dynamic: true
+  - folder: Sources
+    files:
+      - folder: Run
+        files:
+          - main.swift
+      - folder: App
+        files:
+          - file: ServerConfiguration.swift
+            dynamic: true
+          - folder: Controllers
+            files:
+              - file: ProfileController.swift
+              - file: AuthoConnectable.swift
+          - folder: Core
+            files:
+              - folder: Extensions
+                files:
+                  - .gitkeep
+              - Constant.swift
+              - Endpoint.swift
+          - folder: Migrations
+            files:
+              - CreateProfile.swift
+          - folder: Models
+            files:
+              - Profile.swift
+          - folder: Routers
+            files:
+              - APIRouter.swift
+              - ProfileRouter.swift
+  - folder: Tests
+    files:
+      - folder: AppTests
+        files:
+          - AppTests.swift
+  - folder: Resources
+    if: leaf
+    files:
+      - folder: Views
+        files:
+          - file: index.leaf
+  - folder: Public
+    files:
+      - .gitkeep
+  - file: Dockerfile
+    dynamic: true
+  - file: docker-compose.yml
+    dynamic: true
+  - .gitignore
+  - .dockerignore
