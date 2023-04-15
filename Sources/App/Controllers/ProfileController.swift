@@ -24,6 +24,10 @@ struct ProfileController {
 
         let user = try req.auth.require(UserModel.self)
 
+        guard try await Profile.query(on: req.db).filter(\.$user.$id == user.requireID()).first() == nil else {
+            throw Abort(.badRequest, reason: "Profile already exists!")
+        }
+
         let profile = Profile(name: createRequest.name, surname: createRequest.surname, bio: createRequest.bio)
 
         profile.$user.id = try user.requireID()
@@ -31,6 +35,24 @@ struct ProfileController {
         try await profile.save(on: req.db)
 
         return profile.toDTO(.created, status: .success, message: "Profile created successfully!")
+    }
+
+    func update(req: Request) async throws -> Profile.DTO {
+        let updateRequest = try req.content.decode(Profile.Update.self)
+
+        let user = try req.auth.require(UserModel.self)
+
+        guard let profile = try await Profile.query(on: req.db).filter(\.$user.$id == user.requireID()).first() else {
+            throw Abort(.notFound)
+        }
+
+        profile.name = updateRequest.name
+        profile.surname = updateRequest.surname
+        profile.bio = updateRequest.bio
+
+        try await profile.save(on: req.db)
+
+        return profile.toDTO(.ok, status: .success, message: "Profile updated successfully!")
     }
 
     func delete(req: Request) async throws -> Connector.DTO {

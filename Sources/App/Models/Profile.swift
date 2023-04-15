@@ -44,6 +44,13 @@ extension Profile {
         let surname: String
         let bio: String
     }
+
+    struct Update: Content {
+        let name: String
+        let surname: String
+        let bio: String
+    }
+
     struct List: Connectable {
         let count: Int
         let profiles: [Profile]
