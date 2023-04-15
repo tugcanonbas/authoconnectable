@@ -20,11 +20,11 @@ volumes:
   db_data:
 
 x-shared_environment: &shared_environment
-LOG_LEVEL: ${LOG_LEVEL:-debug}
-DATABASE_HOST: db
-DATABASE_NAME: vapor_database
-DATABASE_USERNAME: vapor_username
-DATABASE_PASSWORD: vapor_password
+  LOG_LEVEL: ${LOG_LEVEL:-debug}
+  DATABASE_HOST: db
+  DATABASE_NAME: vapor_database
+  DATABASE_USERNAME: vapor_username
+  DATABASE_PASSWORD: vapor_password
   
 services:
   app:
@@ -62,24 +62,24 @@ services:
     deploy:
       replicas: 0{{#fluent.is_postgres}}
   db:
-    image: postgres:14-alpine
+    image: postgres
     volumes:
       - db_data:/var/lib/postgresql/data/pgdata
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
-      POSTGRES_USER: vapor_username
-      POSTGRES_PASSWORD: vapor_password
-      POSTGRES_DB: vapor_database
+      POSTGRES_USER: ${DATABASE_USERNAME}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+      POSTGRES_DB: ${DATABASE_NAME}
     ports:
       - '5432:5432'{{/fluent.is_postgres}}{{#fluent.is_mysql}}
   db:
-    image: mysql:8.0
+    image: mysql
     volumes:
       - db_data:/var/lib/mysql
     environment:
       MYSQL_USER: vapor_username
-      MYSQL_PASSWORD: vapor_password
-      MYSQL_DATABASE: vapor_database
+      MYSQL_PASSWORD: ${DATABASE_USERNAME}
+      MYSQL_DATABASE: ${DATABASE_PASSWORD}
       MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     ports:
       - '3306:3306'{{/fluent.is_mysql}}
