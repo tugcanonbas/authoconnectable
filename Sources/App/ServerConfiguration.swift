@@ -68,19 +68,19 @@ public struct ServerConfiguration {
     private func database() throws {
         app.console.info("Configuring database...")
 
-    {{#fluent.is_postgres}}app.databases.use(.postgres(
-        hostname: Constant.Database.hostname,
-        port: Constant.Database.port,
-        username: Constant.Database.username,
-        password: Constant.Database.password,
-        database: Constant.Database.database
-    ), as: .psql){{/fluent.is_postgres}}{{#fluent.is_mysql}}app.databases.use(.mysql(
-        hostname: Constant.Database.hostname,
-        port: Constant.Database.port,
-        username: Constant.Database.username,
-        password: Constant.Database.password,
-        database: Constant.Database.database
-    ), as: .mysql){{/fluent.is_mysql}}
+        {{#fluent.is_postgres}}app.databases.use(.postgres(
+            hostname: Constant.Database.hostname,
+            port: Constant.Database.port,
+            username: Constant.Database.username,
+            password: Constant.Database.password,
+            database: Constant.Database.database
+        ), as: .psql){{/fluent.is_postgres}}{{#fluent.is_mysql}}app.databases.use(.mysql(
+            hostname: Constant.Database.hostname,
+            port: Constant.Database.port,
+            username: Constant.Database.username,
+            password: Constant.Database.password,
+            database: Constant.Database.database
+        ), as: .mysql){{/fluent.is_mysql}}
     }
 
     private func migrations() throws {

@@ -19,6 +19,7 @@ struct ProfileRouter: RouteCollection {
         }
         
         let protected = profiles.grouped(AuthoMiddleware())
+        protected.post(use: controller.create)
         protected.group(Endpoint.profileID) { profile in
             profile.delete(use: controller.delete)
         }

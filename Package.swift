@@ -12,7 +12,9 @@ let package = Package(
         .package(url: "https://github.com/vapor/fluent.git", from: "4.0.0"),
         .package(url: "https://github.com/vapor/fluent-{{fluent.url}}-driver.git", from: "{{fluent.version}}"),{{#leaf}}
         .package(url: "https://github.com/vapor/leaf.git", from: "4.0.0"),{{/leaf}}
+        // 📦 ConnectableKit is a Swift package for the Vapor framework that simplifies the response DTOs and JSON structures for API projects.
         .package(url: "https://github.com/tugcanonbas/connectable-kit.git", from: "1.0.0"),
+        // 📦 Authomatek is a pre-configured authentication for relational databases. It automates the process of creating all the necessary routes, controllers, and models, allowing you to quickly and easily set up authentication for your Vapor application.
         .package(url: "https://github.com/tugcanonbas/authomatek.git", from: "0.0.1"),
     ],
     targets: [
