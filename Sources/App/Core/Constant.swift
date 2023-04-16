@@ -17,8 +17,8 @@ enum Constant {
     enum Database {
         static let hostname: String = Environment.get("DATABASE_HOST") ?? "localhost"
         static let port: Int = Environment.get("DATABASE_PORT").flatMap(Int.init) ?? 5432
-        static let username: String = Environment.get("DATABASE_USERNAME") ?? "postgres"
-        static let password: String = Environment.get("DATABASE_PASSWORD") ?? "postgres"
-        static let database: String = Environment.get("DATABASE_NAME") ?? "db"
+        static let username: String = Environment.get("DATABASE_USERNAME") ?? "vapor_username"
+        static let password: String = Environment.get("DATABASE_PASSWORD") ?? "vapor_password"
+        static let database: String = Environment.get("DATABASE_NAME") ?? "vapor_database"
     }
 }
