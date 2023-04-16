@@ -12,16 +12,14 @@ struct WebRouter: RouteCollection {
     func boot(routes: RoutesBuilder) throws {
         routes.get(use: index)
         routes.get(.anything, use: catchAll)
-
-        try catchAll(routes: web)
     }
 
     func index(req: Request) async throws -> View {
-        return req.view.render("index", ["title": "AuthoConnectable Template"])
+        return try await req.view.render("index", ["title": "AuthoConnectable Template"])
     }
 
     func catchAll(req: Request) async throws -> View {
         // MARK: - Custom 404 page
-        return req.view.render("index", ["title": "NOT FOUND"])
+        return try await req.view.render("index", ["title": "NOT FOUND"])
     }
 }
