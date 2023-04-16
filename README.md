@@ -153,6 +153,8 @@ With Authomatek, you can get up and running with secure user authentication in n
 - User logout
 - User JWT refresh
 
+---
+
 ## License
 
 AuthoConnectable is released under the MIT license. See LICENSE for details.
