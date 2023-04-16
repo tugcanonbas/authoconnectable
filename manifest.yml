@@ -44,7 +44,8 @@ files:
               - folder: Extensions
                 files:
                   - .gitkeep
-              - Constant.swift
+              - file: Constant.swift
+                dynamic: true
               - Endpoint.swift
           - folder: Migrations
             files:
