@@ -57,6 +57,8 @@ files:
               - file: APIRouter.swift
                 dynamic: true
               - ProfileRouter.swift
+              - file: WebRouter.swift
+                dynamic: true
   - folder: Tests
     files:
       - folder: AppTests

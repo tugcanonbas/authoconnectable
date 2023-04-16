@@ -101,6 +101,7 @@ public struct ServerConfiguration {
 
         app.routes.defaultMaxBodySize = "10mb"
 
+        {{#leaf}}try app.register(collection: WebRouter()){{/leaf}}
         try app.register(collection: APIRouter())
     }
 }
